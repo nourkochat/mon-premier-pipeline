@@ -1,17 +1,21 @@
-﻿#.github/workflows/cd.yml
-name: CD - GitHub Pages
-
+﻿name: CD - GitHub Pages
 on:
   push:
     branches:
       - main
-
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+      - name: Test
+        run: echo "Tests passed"
+  
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
