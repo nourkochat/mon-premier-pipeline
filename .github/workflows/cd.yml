@@ -1,4 +1,5 @@
-﻿name: CD - GitHub Pages
+﻿#.github/workflows/cd.yml
+name: CD - GitHub Pages
 
 on:
   push:
